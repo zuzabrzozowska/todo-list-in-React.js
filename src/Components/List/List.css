@@ -1,0 +1,37 @@
+/* LIST */
+ul {
+    width: 90%;
+    min-height: 50vh;  
+    padding: 10px;
+  }
+  
+  li:first-of-type {
+    border-top: 1px solid lightgrey;
+    margin-top: 15px;
+  }
+  
+  li {
+    padding: 5px 0;
+    border-bottom: 1px solid lightgrey;
+  }
+  
+  li span {
+    margin: 0 10px;
+  }
+  
+  /* done things decoration */
+  .strike-item {
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+  
+  .fa-star {
+    color: rgb(255, 187, 0);
+    opacity: 0;
+    text-shadow: 1px 1px 2px grey;
+  }
+  
+  .show-star {
+    opacity: 1;
+    margin-left: 10px;
+  }

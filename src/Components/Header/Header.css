@@ -1,0 +1,37 @@
+/* HEADER */
+.header {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 120px;
+  }
+  
+  h1 {
+    text-align: center;
+    font-weight: bold;
+    color: var(--blue);
+  }
+  
+  input {
+    width: 90%;
+    border: none;
+    border-bottom: solid 1px lightgrey;
+    padding: 5px; 
+    text-align: center;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    background: white;
+    transition: 0.3s ease-in-out;
+  }
+  
+  input::placeholder {
+    text-align: center;
+    color: transparent;
+  }
+  
+  input:focus {
+    border-bottom: solid grey 1px;
+  }
