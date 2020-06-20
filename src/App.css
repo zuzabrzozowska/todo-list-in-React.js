@@ -32,11 +32,12 @@ button {
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
-  color: var(--blue);
-  background: white;
-  border: none;
-  padding: 6px 8px;
-  border-radius: 1px;
+  color: white;
+  background: var(--lightblue);
+  border: 1px solid transparent;
+  border-radius: 3px;
+  padding: 6px 8px; 
+  margin-left: 10px;
   transition: 0.3s;
 }
 
@@ -45,10 +46,122 @@ form {
   align-items: center;
 }
 
+h1 {
+  text-align: center;
+  font-weight: bold;
+  color: var(--blue);
+}
+
+input {
+  width: 90%;
+  border: none;
+  border-bottom: solid 1px lightgrey;
+  padding: 5px; 
+  text-align: center;
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  background: white;
+  transition: 0.3s ease-in-out;
+}
+
+input::placeholder {
+  text-align: center;
+  color: transparent;
+}
+
+input:focus {
+  border-bottom: solid grey 1px;
+}
+
 button:hover {
   color: white;
-  background: var(--lightblue);
+  background: var(--blue);
 }
 button:focus {
   outline-style: none;
 }
+
+/* HEADER */
+.header {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 120px;
+}
+
+/* LIST */
+ul {
+  width: 90%;
+  min-height: 50vh;  
+  padding: 10px;
+}
+
+li:first-of-type {
+  border-top: 1px solid lightgrey;
+  margin-top: 15px;
+}
+
+li {
+  padding: 5px 0;
+  border-bottom: 1px solid lightgrey;
+}
+
+li span {
+  margin: 0 10px;
+}
+
+/* done things decoration */
+.strike-item {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.fa-star {
+  color: rgb(255, 187, 0);
+  opacity: 0;
+  text-shadow: 1px 1px 2px grey;
+}
+
+.show-star {
+  opacity: 1;
+  margin-left: 10px;
+}
+
+/* modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+  /* Modal Content */
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    background: white;
+    border: 1px solid #888;
+    width: 90%;
+    padding: 5px;
+  } 
+
+  .popupInput {
+    margin-left: 10px;
+    width: 90%;
+  }
+  
+  .popupBtns {
+    display: flex;
+    justify-content: space-around;
+  }
