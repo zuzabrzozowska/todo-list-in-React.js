@@ -1,15 +1,29 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      //nasze zmienne "globalne"
       todoList: [],
-      newTask: ''
+      newTask: {
+        title: '',
+        author: '',
+        //priority: 1, //Math.floor(value)
+        description: ''
+      }
     }
+  }
+  onInputChange = (event) => {
+    const {newTask} = this.state;
+
+    //newTask[author] = 'krzysio';
+    newTask[event.target.name] = event.target.value;
+    
+    this.setState({newTask}); //dlaczego tylko tyle?
+    console.log({newTask});
   }
 
   getAndRenderTasks = () => {
@@ -19,9 +33,9 @@ class App extends React.Component {
     })
   }
   postAndRenderTasks = (newTask) => {
-    axios.post('http://51.75.120.145:3000/todo', {
-      title: newTask
-    }).then(() => {
+
+    axios.post('http://51.75.120.145:3000/todo', newTask)
+    .then(() => {
       this.getAndRenderTasks();
     })
   }
@@ -37,10 +51,6 @@ class App extends React.Component {
     .then(() => {
       this.getAndRenderTasks();
     })
-  }
-
-  onInputChange = event => {
-    this.setState({newTask: event.target.value})
   }
 
   //openModal = () => {
@@ -60,13 +70,17 @@ class App extends React.Component {
       <main className="wrapper">
 
         <div id="addForm" className="header">
-          <h1>&lt; MY CHECKLIST &gt;</h1>
+          
           <form autoComplete="off">
-            <i className="fas fa-pen-alt"></i>
-            <input type="text"
-            //chcemy na każdym razem jak zmieniamy wartość inputa aktualizować nasz newTask w this.state
-            onChange={this.onInputChange}
-            />
+
+            <input type="text" name="title" placeholder="title"
+            onChange={this.onInputChange} />
+            <input type="text" name="description"  placeholder="desc"
+            onChange={this.onInputChange} /> 
+            <input type="text" name="author"  placeholder="author"
+            onChange={this.onInputChange} />
+            <input type="number" min="1" max="3" name="priority" placeholder="choose priority"></input>
+
             <button className="addTodo"
             onClick={() => this.postAndRenderTasks(this.state.newTask)}
             >ADD</button>
@@ -79,6 +93,8 @@ class App extends React.Component {
             return (
             <li key={task.id}>
               
+              <i class="far fa-check-circle"></i>
+              
               <span 
               onClick={this.openModal}>
                 {task.title}
@@ -86,7 +102,7 @@ class App extends React.Component {
 
               <button 
               onClick={() => this.deleteAndRenderTasks(task.id)}>
-                delete
+                &times;
                 </button>
 
             </li>
