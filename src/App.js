@@ -1,30 +1,38 @@
 import React from 'react';
 import './App.css';
+import CreateNewTask from './Components/CreateNewTask/CreateNewTask';
 import axios from 'axios';
 
 class App extends React.Component {
   constructor() {
     super();
-    this.state = {
-      //nasze zmienne "globalne"
-      todoList: [],
-      newTask: {
-        title: '',
-        author: '',
-        //priority: 1, //Math.floor(value)
-        description: ''
-      }
+    //nasze zmienne "globalne" w stanie:
+    this.state = {  
+      todoList: []
     }
   }
-  onInputChange = (event) => {
-    const {newTask} = this.state;
 
-    //newTask[author] = 'krzysio';
+  /*
+  onInputChange = (event) => { 
+    if (event.target.name === "title") {
+      newTask.title = title.value;
+    } else if (event.target.name === "author") {
+      newTask.author = author.value;
+    } else if...
+    KRÓCEJ I TAKI SAM EFEKT: 
+    newTask[author] = 'krzysio';
     newTask[event.target.name] = event.target.value;
     
-    this.setState({newTask}); //dlaczego tylko tyle?
-    console.log({newTask});
-  }
+    const {newTask} = this.state;
+    //nie możemy zmieniać stanu bezpośrednio po =, bo będzie aktualizacja widoku co każdą literkę
+    //dlatego tworzymy nowy obiekt do edytowania ile chcemy:
+    const newTaskChanged = {...newTask}
+    //edytujemy go na spokojnie:
+    newTaskChanged[event.target.name] = event.target.value;
+    //i w końcu zmieniamy stan i zapełniamy newTask zawartością newTaskChanged (i robi się rerender)
+    this.setState({newTask: newTaskChanged});
+    
+  } */
 
   getAndRenderTasks = () => {
     axios.get('http://51.75.120.145:3000/todo')
@@ -32,8 +40,8 @@ class App extends React.Component {
       this.setState({todoList: resp.data});
     })
   }
-  postAndRenderTasks = (newTask) => {
-
+ 
+  postAndRenderTasks = ({newTask}) => {
     axios.post('http://51.75.120.145:3000/todo', newTask)
     .then(() => {
       this.getAndRenderTasks();
@@ -53,39 +61,16 @@ class App extends React.Component {
     })
   }
 
-  //openModal = () => {
-  //  this.
-  //}
-
   componentDidMount() {
     this.getAndRenderTasks();
   }
 
-  componentWillUnmount() {
-    //trzeba usuwac usuwane z widoku elementy
-  }
 
   render() {
     return (    
       <main className="wrapper">
 
-        <div id="addForm" className="header">
-          
-          <form autoComplete="off">
-
-            <input type="text" name="title" placeholder="title"
-            onChange={this.onInputChange} />
-            <input type="text" name="description"  placeholder="desc"
-            onChange={this.onInputChange} /> 
-            <input type="text" name="author"  placeholder="author"
-            onChange={this.onInputChange} />
-            <input type="number" min="1" max="3" name="priority" placeholder="choose priority"></input>
-
-            <button className="addTodo"
-            onClick={() => this.postAndRenderTasks(this.state.newTask)}
-            >ADD</button>
-          </form>
-        </div>
+        <CreateNewTask />
         
         <ul id="list"> 
         {
@@ -93,17 +78,15 @@ class App extends React.Component {
             return (
             <li key={task.id}>
               
-              <i class="far fa-check-circle"></i>
+              <i className="far fa-check-circle"></i>
               
-              <span 
-              onClick={this.openModal}>
+              <span onClick={this.openModal}>
                 {task.title}
-                </span>
+              </span>
 
-              <button 
-              onClick={() => this.deleteAndRenderTasks(task.id)}>
+              <button onClick={() => this.deleteAndRenderTasks(task.id)}>
                 &times;
-                </button>
+              </button>
 
             </li>
             )
