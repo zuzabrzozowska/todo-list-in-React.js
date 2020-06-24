@@ -54,7 +54,7 @@ h1 {
 }
 
 input {
-  
+  width: 150px;
   border: none;
   border-bottom: solid 1px lightgrey;
   padding: 5px; 
@@ -63,7 +63,7 @@ input {
   font-family: inherit;
   font-size: inherit;
   outline: none;
-  background: var(--salmon);
+  background: white;
   transition: 0.3s ease-in-out;
 }
 
@@ -73,7 +73,7 @@ input::placeholder {
 }
 
 input:focus {
-  border-bottom: solid grey 2px;
+  border-bottom: solid var(--salmon) 2px;
 }
 
 button:hover {

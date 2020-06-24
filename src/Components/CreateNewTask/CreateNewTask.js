@@ -22,6 +22,9 @@ class CreateNewTask extends React.Component {
 
         const newTaskChanged = {...newTask}
         newTaskChanged[target.name] = target.value; //newTask[url] = 'google.pl';
+        if (newTaskChanged[target.name] === "priority") {
+            Math.floor(target.value);
+        }
 
         this.setState({newTask: newTaskChanged})
     }
@@ -34,27 +37,22 @@ class CreateNewTask extends React.Component {
         this.props.postTask(this.state.newTask);
         
         //input value = '' +
-        const emptyNewTask = {...this.state.newTask}
-
-        emptyNewTask.title = '';
-        emptyNewTask.url = '';
-        emptyNewTask.description = '';
-        console.log(emptyNewTask);
-        //how to access input.value???
-        this.setState({newTask: emptyNewTask})
+        document.getElementById("myForm").reset();
     }
 
     render() {
         return(
             <div id="addForm" className="header">    
                 <h1>Add new todo:</h1>    
-                <form autoComplete="off">
+                <form autoComplete="off" id="myForm">
 
                     <input type="text" name="title" placeholder="title"
                     onChange={this.onInputChange} />
                     <input type="text" name="description" placeholder="desc"
                     onChange={this.onInputChange} /> 
                     <input type="text" name="url" placeholder="url"
+                    onChange={this.onInputChange} />
+                    <input type="number" min="1" max="3" name="priority" placeholder="set priority"
                     onChange={this.onInputChange} />
                     
                     <button className="addTodo" onClick={this.onAddButton} >

@@ -17,6 +17,7 @@ function CreateOurList({todoList, deleteTask}) {
                         
                     <span> {task.title} </span>
                     <span> desc: {task.description} </span>
+                    <span> prior: {task.priority} </span>
                     <span> www: <a target="_blank" rel="noopener noreferrer" href={task.url}>{task.url}</a> </span>
 
                     <button onClick={() => deleteTask(task.id)}>
