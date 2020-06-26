@@ -55,6 +55,7 @@ class CreateNewTask extends React.Component {
                     <input type="number" min="1" max="3" name="priority" placeholder="set priority"
                     onChange={this.onInputChange} />
                     
+                    <Button></Button>
                     <button className="addTodo" onClick={this.onAddButton} >
                     ADD</button>
 
