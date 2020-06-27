@@ -1,10 +1,9 @@
 import React from 'react';
+import Button from '../Button/Button.js';
 
 class CreateNewTask extends React.Component {
     constructor(props) {
         super();
-
-        console.log(props); // --> f postTask
 
         this.state = { 
             newTask: { 
@@ -33,17 +32,17 @@ class CreateNewTask extends React.Component {
         //dont add empty fields +
         event.preventDefault(); 
     
-        //using our props from App.js
+        //using our prop from App.js
         this.props.postTask(this.state.newTask);
         
-        //input value = '' +
+        //zerowanie inputu
         document.getElementById("myForm").reset();
     }
 
     render() {
         return(
             <div id="addForm" className="header">    
-                <h1>Add new todo:</h1>    
+                <h1>ADD NEW TODO</h1>    
                 <form autoComplete="off" id="myForm">
 
                     <input type="text" name="title" placeholder="title"
@@ -55,9 +54,8 @@ class CreateNewTask extends React.Component {
                     <input type="number" min="1" max="3" name="priority" placeholder="set priority"
                     onChange={this.onInputChange} />
                     
-                    <Button></Button>
-                    <button className="addTodo" onClick={this.onAddButton} >
-                    ADD</button>
+                    <Button name="ADD" onClick={this.onAddButton}></Button>
+                    
 
                 </form>
             </div>

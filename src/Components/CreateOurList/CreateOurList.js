@@ -1,8 +1,11 @@
 import React from 'react';
 import './CreateOurList.css';
+import Button from '../Button/Button.js';
 
-//props are in the arguments
-//if there is no state, no class needed
+//FUNCTIONS REACT
+//1. props are in the arguments
+//2. if there is no state, no class needed
+//3. return instead of render
 
 function CreateOurList({todoList, deleteTask}) {
     console.log(todoList);
@@ -13,16 +16,12 @@ function CreateOurList({todoList, deleteTask}) {
                 return (
                     <li key={task.id}>
                         
-                    <i className="far fa-check-circle"></i>
-                        
                     <span> {task.title} </span>
-                    <span> desc: {task.description} </span>
+                    <span>desc:{task.description}</span>
                     <span> prior: {task.priority} </span>
                     <span> www: <a target="_blank" rel="noopener noreferrer" href={task.url}>{task.url}</a> </span>
 
-                    <button onClick={() => deleteTask(task.id)}>
-                    &times;
-                    </button>
+                    <Button type="1" name="delete" onClick={() => deleteTask(task.id)}></Button>
 
                     </li>
                 );

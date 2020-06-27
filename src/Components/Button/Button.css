@@ -1,0 +1,16 @@
+.btn-red {
+    background: rgba(250, 0, 54, 0.788);
+}
+
+.btn-red:hover {
+    background: red;
+}
+
+.btn-green {
+    background: rgba(0, 128, 0, 0.671);
+}
+
+button img {
+    color: white;
+    width: 17px;
+}
