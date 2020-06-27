@@ -18,7 +18,7 @@ function CreateOurList({todoList, deleteTask}) {
                     <span className="todoTitle"> {task.title} </span>
                     { task.description && <span>desc: {task.description}</span>}
                     { task.priority && <span>prior: {task.priority}</span>}
-                    { task.url && <span>www: <a target="_blank" rel="noopener noreferrer" href={task.url}>{task.url}</a></span>}
+                    { task.url && <span><a target="_blank" rel="noopener noreferrer" href={task.url}>{task.url}</a></span>}
 
                     <Button type="2" name="delete" onClick={() => deleteTask(task.id)}></Button>
                     <Button type="3" name="fallback btn"></Button>

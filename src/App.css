@@ -60,7 +60,7 @@ input::placeholder {
 }
 
 input:focus {
-  border-bottom: solid var(--pink) 2px;
+  border-bottom: solid var(--lightpurple) 2px;
 }
 
 /* HEADER */

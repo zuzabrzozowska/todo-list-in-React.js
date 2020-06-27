@@ -1,0 +1,12 @@
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 20px;
+    z-index: 2;
+    color: purple;
+    font-family: 'Times New Roman', serif;
+    border: 1px solid purple;
+    width: 200px;
+    height: 5vh;
+}

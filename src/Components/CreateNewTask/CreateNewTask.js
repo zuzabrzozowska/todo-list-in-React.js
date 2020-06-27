@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../Button/Button.js';
+import './CreateNewTask.css';
 
 class CreateNewTask extends React.Component {
     constructor(props) {
@@ -10,7 +11,10 @@ class CreateNewTask extends React.Component {
             title: '', 
             url: '', 
             description: ''
-            },    
+            },  
+            isWrong: false,
+            alertError: '',  
+            errorClass: '',
         }
     }
 
@@ -29,20 +33,30 @@ class CreateNewTask extends React.Component {
     }
 
     onAddButton = (event) => {
-        //dont add empty fields +
         event.preventDefault(); 
-    
-        //using our prop from App.js
-        this.props.postTask(this.state.newTask);
         
-        //zerowanie inputu
+        const {newTask} = this.state;
+        if (newTask.title.length === 0) {
+            this.setState({isWrong: true});
+            this.setState({alertError: 'title field can\'t be blank'}); 
+            this.setState({errorClass: 'error'})
+            return;
+        } else {
+            this.setState({isWrong: false})
+        }
+
+        //using our prop from App.js
+        this.props.postTask(newTask);
+        
+        //reseting input field
         document.getElementById("myForm").reset();
     }
 
     render() {
         return(
             <div id="addForm" className="header">    
-                <h1>ADD NEW TODO</h1>    
+                <h1>ADD NEW TODO</h1> 
+                {(this.state.isWrong) && <div className={this.state.errorClass}>{this.state.alertError}</div>}   
                 <form autoComplete="off" id="myForm">
 
                     <input type="text" name="title" placeholder="title"
@@ -53,10 +67,7 @@ class CreateNewTask extends React.Component {
                     onChange={this.onInputChange} />
                     <input type="number" min="1" max="3" name="priority" placeholder="set priority"
                     onChange={this.onInputChange} />
-                    
                     <Button type="1" name="ADD" onClick={this.onAddButton}></Button>
-                    
-
                 </form>
             </div>
         );
