@@ -11,14 +11,26 @@ function Button({onClick, name, type}) {
     //   btnClass = 'btn-red';
     //}
     
-    type === "1" ? btnClass = 'btn-red': btnClass = null;
-    type === "1" ? iconClass = 'far fa-trash-alt' : iconClass = 'fas fa-plus';
+    switch(type) {
+        case "1":
+            iconClass = 'fas fa-plus';
+            btnClass = null;
+            break;
+        case "2":
+            btnClass = 'btn-red';
+            iconClass = 'far fa-trash-alt';
+            break;
+        default:
+            btnClass = null;
+            iconClass = null;
+        //maslo maslane z linijka 33  
+    }
 
     return (
         <button 
             className={btnClass} 
             onClick={onClick}>
-            {name} <i className={iconClass} /> 
+            {name} {iconClass && <i className={iconClass}/>}
         </button>
     )
 }

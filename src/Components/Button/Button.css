@@ -1,16 +1,46 @@
+:root {
+    --purple: rgb(110, 0, 68); 
+    --pink: pink; 
+    --lightpurple: purple; 
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    color: var(--lightpurple);
+    background: white;
+    border: 1px solid var(--lightpurple);
+    border-radius: 3px;
+    padding: 6px 8px; 
+    margin-left: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    color: white;
+    background: var(--purple);
+}
+
+button:focus {
+    outline-style: none;
+}
+
+
 .btn-red {
     background: rgba(250, 0, 54, 0.788);
+    color: white;
+    border: none;
 }
 
 .btn-red:hover {
-    background: red;
+    background: var(--lightpurple);
 }
 
 .btn-green {
     background: rgba(0, 128, 0, 0.671);
 }
 
-button img {
-    color: white;
-    width: 17px;
+.far, .fas {
+    margin-left: 5px;
 }

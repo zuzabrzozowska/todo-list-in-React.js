@@ -1,7 +1,7 @@
 :root {
-  --purple: rgb(110, 0, 68); /*blue*/
-  --pink: pink; /*salmon */
-  --lightpurple: purple; /*lightblue*/
+  --purple: rgb(110, 0, 68); 
+  --pink: pink;
+  --lightpurple: purple;
 }
 
 body {
@@ -26,22 +26,6 @@ body {
   min-height: 50vh;
   background: white;
   box-shadow: 0 0 5px grey;
-}
-
-button {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
-  color: var(--lightpurple);
-  background: white;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  padding: 6px 8px; 
-  margin-left: 10px;
-  transition: 0.3s;
 }
 
 form {
@@ -77,14 +61,6 @@ input::placeholder {
 
 input:focus {
   border-bottom: solid var(--pink) 2px;
-}
-
-button:hover {
-  color: white;
-  background: var(--purple);
-}
-button:focus {
-  outline-style: none;
 }
 
 /* HEADER */

@@ -1,5 +1,6 @@
 /* LIST */
 ul {
+    list-style: circle;
     width: 90%;
     min-height: 50vh;  
     padding: 10px;
@@ -14,26 +15,14 @@ ul {
     padding: 5px 0;
     border-bottom: 1px solid lightgrey;
   }
+
+  .todoTitle {
+    font-size: 1.2em;
+  }
   
   li span {
-    margin: 0 10px;
-  }
-  
-  /* done things decoration */
-  .strike-item {
-    text-decoration: line-through;
-    opacity: 0.7;
-  }
-  
-  .fa-star {
-    color: rgb(255, 187, 0);
-    opacity: 0;
-    text-shadow: 1px 1px 2px grey;
-  }
-  
-  .show-star {
-    opacity: 1;
-    margin-left: 10px;
+    margin: 5px;
+    display: block;
   }
   
   /* modal */

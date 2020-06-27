@@ -8,7 +8,6 @@ import Button from '../Button/Button.js';
 //3. return instead of render
 
 function CreateOurList({todoList, deleteTask}) {
-    console.log(todoList);
     return(
         <ul id="list"> 
             <h1>My todos:</h1>
@@ -16,12 +15,14 @@ function CreateOurList({todoList, deleteTask}) {
                 return (
                     <li key={task.id}>
                         
-                    <span> {task.title} </span>
-                    <span>desc:{task.description}</span>
-                    <span> prior: {task.priority} </span>
-                    <span> www: <a target="_blank" rel="noopener noreferrer" href={task.url}>{task.url}</a> </span>
+                    <span className="todoTitle"> {task.title} </span>
+                    { task.description && <span>desc: {task.description}</span>}
+                    { task.priority && <span>prior: {task.priority}</span>}
+                    { task.url && <span>www: <a target="_blank" rel="noopener noreferrer" href={task.url}>{task.url}</a></span>}
 
-                    <Button type="1" name="delete" onClick={() => deleteTask(task.id)}></Button>
+                    <Button type="2" name="delete" onClick={() => deleteTask(task.id)}></Button>
+                    <Button type="3" name="fallback btn"></Button>
+
 
                     </li>
                 );
