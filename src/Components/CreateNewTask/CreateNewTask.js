@@ -37,10 +37,8 @@ class CreateNewTask extends React.Component {
         
         const {newTask} = this.state;
 
-        if (newTask.title.length === 0) {
-            this.setState({isWrong: true});
-            this.setState({alertError: 'title field can\'t be blank'}); 
-            this.setState({errorClass: 'error'})
+        if (newTask.title.trim() === '') {
+            this.setState({isWrong: true, alertError: 'title field can\'t be blank! :)', errorClass: 'error'});
             return;
         } 
         this.setState({errorClass: ''})

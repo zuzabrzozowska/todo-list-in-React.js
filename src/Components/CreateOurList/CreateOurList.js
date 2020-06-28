@@ -23,7 +23,6 @@ function CreateOurList({todoList, deleteTask}) {
                     <Button type="2" name="delete" onClick={() => deleteTask(task.id)}></Button>
                     <Button type="3" name="fallback btn"></Button>
 
-
                     </li>
                 );
             })}

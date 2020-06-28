@@ -1,3 +1,53 @@
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+  
+h1 {
+    text-align: center;
+    font-weight: bold;
+    color: var(--purple);
+}
+  
+input {
+    width: 170px;
+    border: none;
+    border-bottom: solid 1px lightgrey;
+    padding: 5px; 
+    margin: 5px;
+    text-align: center;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+    background: white;
+    transition: 0.3s ease-in-out;
+}
+
+input:first-of-type {
+    width: 300px;
+    border-bottom: solid 1px purple;
+}
+  
+input::placeholder {
+    text-align: center;
+    font-style: italic;
+}
+  
+input:focus {
+    background: pink;
+}
+  
+  /* HEADER */
+.header {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 30vh;
+}
+
 .error {
     display: flex;
     justify-content: center;
