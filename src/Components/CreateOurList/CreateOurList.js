@@ -16,8 +16,8 @@ function CreateOurList({todoList, deleteTask}) {
                     <li key={task.id}>
                         
                     <span className="todoTitle"> {task.title} </span>
-                    { task.description && <span>desc: {task.description}</span>}
-                    { task.priority && <span>prior: {task.priority}</span>}
+                    { task.description && <span>description: {task.description}</span>}
+                    { task.priority && <span>priority: {task.priority}</span>}
                     { task.url && <span><a target="_blank" rel="noopener noreferrer" href={task.url}>{task.url}</a></span>}
 
                     <Button type="2" name="delete" onClick={() => deleteTask(task.id)}></Button>

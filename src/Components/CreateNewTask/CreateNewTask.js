@@ -36,20 +36,18 @@ class CreateNewTask extends React.Component {
         event.preventDefault(); 
         
         const {newTask} = this.state;
+
         if (newTask.title.length === 0) {
             this.setState({isWrong: true});
             this.setState({alertError: 'title field can\'t be blank'}); 
             this.setState({errorClass: 'error'})
             return;
-        } else {
-            this.setState({isWrong: false})
-        }
-
-        //using our prop from App.js
+        } 
+        this.setState({errorClass: ''})
+        this.setState({alertError: ''})
         this.props.postTask(newTask);
-        
-        //reseting input field
         document.getElementById("myForm").reset();
+        this.setState({newTask: { title: '', url: '', description: ''}});
     }
 
     render() {
