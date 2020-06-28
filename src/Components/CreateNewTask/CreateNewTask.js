@@ -6,15 +6,15 @@ class CreateNewTask extends React.Component {
     constructor(props) {
         super();
 
+        this.clearTask = {
+                title: '', 
+                url: '', 
+                description: ''
+        }
+        
         this.state = { 
-            newTask: { 
-            title: '', 
-            url: '', 
-            description: ''
-            },  
-            isWrong: false,
+            newTask: this.clearTask,  
             alertError: '',  
-            errorClass: '',
         }
     }
 
@@ -36,23 +36,25 @@ class CreateNewTask extends React.Component {
         event.preventDefault(); 
         
         const {newTask} = this.state;
+        console.log(newTask);
 
-        if (newTask.title.trim() === '') {
-            this.setState({isWrong: true, alertError: 'title field can\'t be blank! :)', errorClass: 'error'});
+        if (newTask.title.length === 0) {
+            this.setState({alertError: 'title field can\'t be blank! :)'});
             return;
-        } 
-        this.setState({errorClass: ''})
-        this.setState({alertError: ''})
+        } else if (newTask.title.length < 4) {
+            this.setState({alertError: 'try typing more than 3 letters <3'});
+            return;
+        }
         this.props.postTask(newTask);
         document.getElementById("myForm").reset();
-        this.setState({newTask: { title: '', url: '', description: ''}});
+        this.setState({newTask: this.clearTask, alertError: ''});
     }
 
     render() {
         return(
             <div id="addForm" className="header">    
                 <h1>ADD NEW TODO</h1> 
-                {(this.state.isWrong) && <div className={this.state.errorClass}>{this.state.alertError}</div>}   
+                {(this.state.alertError) && <div className="error">{this.state.alertError}</div>}   
                 <form autoComplete="off" id="myForm">
 
                     <input type="text" name="title" placeholder="title"
