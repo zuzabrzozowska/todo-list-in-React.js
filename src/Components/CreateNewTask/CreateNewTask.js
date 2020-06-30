@@ -19,7 +19,7 @@ class CreateNewTask extends React.Component {
     }
 
     //updating state of newTask
-    onInputChange = (event) => {
+    onInputChange = event => {
         const {target} = event; //event.target
         const {newTask} = this.state; //this.state.newTask
 
@@ -32,11 +32,10 @@ class CreateNewTask extends React.Component {
         this.setState({newTask: newTaskChanged})
     }
 
-    onAddButton = (event) => {
+    onAddButton = event => {
         event.preventDefault(); 
         
         const {newTask} = this.state;
-        console.log(newTask);
 
         if (newTask.title.length === 0) {
             this.setState({alertError: 'title field can\'t be blank! :)'});

@@ -48,6 +48,7 @@ ul {
   .modal-content {
       display: flex;
       justify-content: space-around;
+      align-items: ;
       margin: auto;
       background: white;
       border: 1px solid #888;

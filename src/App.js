@@ -3,7 +3,7 @@ import './App.css';
 import CreateNewTask from './Components/CreateNewTask/CreateNewTask';
 import CreateOurList from './Components/CreateOurList/CreateOurList';
 
-import { getAndRenderServer, deleteAndRenderServer, postAndRenderServer } from './axios';
+import { getFromServer, deleteFromServer, postToServer } from './axios';
 
 class App extends React.Component {
   constructor() {
@@ -15,19 +15,19 @@ class App extends React.Component {
   }
 
   getAndRenderTasks = () => {
-    getAndRenderServer().then (response => {
+    getFromServer().then (response => {
       this.setState({todoList: response.data}) 
     })
   }
 
-  postAndRenderTasks = (newTask) => {
-    postAndRenderServer(newTask).then (() => {
+  postAndRenderTasks = newTask => {
+    postToServer(newTask).then (() => {
       this.getAndRenderTasks();
     })
   }
 
-  deleteAndRenderTasks = (id) => {
-    deleteAndRenderServer(id).then (() => {
+  deleteAndRenderTasks = id => {
+    deleteFromServer(id).then (() => {
       this.getAndRenderTasks();
     })
   }
@@ -39,14 +39,12 @@ class App extends React.Component {
 
   render() {
 
-    //przekazujemy dzieciom dostęp do obiektów (funkcje i tablica)
     return (    
       <main className="wrapper">
         
         <CreateNewTask postTask={this.postAndRenderTasks}/>
         <CreateOurList todoList={this.state.todoList} deleteTask={this.deleteAndRenderTasks} />
-        
-
+ 
       </main>
     );
   }

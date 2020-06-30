@@ -1,6 +1,7 @@
 import React from 'react';
 import './CreateOurList.css';
 import Button from '../Button/Button.js';
+import { editOnServer } from '../../axios';
 
 class CreateOurList extends React.Component {
     constructor() {
@@ -11,12 +12,14 @@ class CreateOurList extends React.Component {
             currentInputVal: '',
             span: ''
         }
-        
     }
-    
+
+    hideModal = () => {
+        this.setState({ show: false });
+    };
+
     showModal = event => {
         this.setState({ show: true });
-
         const spanText = event.target.closest('li').firstElementChild.innerText;
         this.setState({span: spanText})
     };
@@ -24,12 +27,21 @@ class CreateOurList extends React.Component {
     getEditedTask = event => {
         const editedVal = event.target.value;
         this.setState({currentInputVal: editedVal})
-        console.log(this.state.currentInputVal) //<-----rerender co kazda litere :(
+        //console.log(this.state.currentInputVal) //<-----rerender co kazda litere :(   
     }
     
-    hideModal = () => {
-        this.setState({ show: false });
-    };
+    editAndRenderTasks = (id, text) => {
+        editOnServer(id, text).then(() => {
+            this.props.getTasks();
+        })
+    }
+
+    onOKButton = event => {
+        event.preventDefault(); 
+        this.props.todoList.push(this.state.currentInputVal)
+        //this.editAndRenderTasks(li.key, this.state.currentInputVal)
+    }
+    
 
     render() {
         return(
@@ -37,7 +49,7 @@ class CreateOurList extends React.Component {
                 <ul id="list"> 
                     <h1>My todos:</h1>
                     {this.props.todoList.map(task => {
-                        return (  //jak podmienić {task.title} na {this.state.currentInputVal}
+                        return (
                             <li key={task.id}>
                         
                             <span className="todoTitle"> {task.title} </span> 
@@ -61,7 +73,7 @@ class CreateOurList extends React.Component {
 }
 
 
-const Modal = ({ handleClose, show, span, getEditedTask }) => {
+const Modal = ({ handleClose, show, span, getEditedTask, onOKButton }) => {
     const showHideClassName = show ? "modal display-block" : "modal";
 
     return (
@@ -69,7 +81,7 @@ const Modal = ({ handleClose, show, span, getEditedTask }) => {
         <div className="modal-content">  
             <form autoComplete="off">
                 <input type="text" className="popupInput" defaultValue={span} onChange={getEditedTask}/>
-                <button className="addBtn">OK</button>
+                <button className="addBtn" onClick={onOKButton}>OK</button>
             </form>
             <button onClick={handleClose}>close</button>
 
