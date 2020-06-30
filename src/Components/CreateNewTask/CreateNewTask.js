@@ -57,7 +57,7 @@ class CreateNewTask extends React.Component {
                 {(this.state.alertError) && <div className="error">{this.state.alertError}</div>}   
                 <form autoComplete="off" id="myForm">
 
-                    <input type="text" name="title" placeholder="title"
+                    <input type="text" name="title" placeholder="title*"
                     onChange={this.onInputChange} />
                     <input type="text" name="description" placeholder="desc"
                     onChange={this.onInputChange} /> 

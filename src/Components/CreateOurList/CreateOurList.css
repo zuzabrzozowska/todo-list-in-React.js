@@ -25,8 +25,9 @@ ul {
     display: block;
   }
   
+
   /* modal */
-  .modal {
+.modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -40,8 +41,11 @@ ul {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     }
   
-    /* Modal Content */
-    .modal-content {
+  .display-block {
+    display: block;
+  }
+
+  .modal-content {
       display: flex;
       flex-direction: column;
       margin: auto;
@@ -51,12 +55,8 @@ ul {
       padding: 5px;
     } 
   
-    .popupInput {
+  .popupInput {
       margin-left: 10px;
       width: 90%;
-    }
+  }
     
-    .popupBtns {
-      display: flex;
-      justify-content: space-around;
-    }
