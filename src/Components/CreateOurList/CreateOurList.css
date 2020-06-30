@@ -39,7 +39,7 @@ ul {
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
+  }
   
   .display-block {
     display: block;
@@ -47,11 +47,11 @@ ul {
 
   .modal-content {
       display: flex;
-      flex-direction: column;
+      justify-content: space-around;
       margin: auto;
       background: white;
       border: 1px solid #888;
-      width: 90%;
+      width: 400px;
       padding: 5px;
     } 
   
