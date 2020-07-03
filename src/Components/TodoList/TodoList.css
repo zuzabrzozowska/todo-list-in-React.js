@@ -28,7 +28,7 @@ ul {
 
   /* modal */
 .modal {
-    display: none; /* Hidden by default */
+    display: block; 
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 100px; /* Location of the box */
@@ -41,14 +41,9 @@ ul {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
   
-  .display-block {
-    display: block;
-  }
-
   .modal-content {
       display: flex;
       justify-content: space-around;
-      align-items: ;
       margin: auto;
       background: white;
       border: 1px solid #888;

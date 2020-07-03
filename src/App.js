@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import CreateNewTask from './Components/CreateNewTask/CreateNewTask';
-import CreateOurList from './Components/CreateOurList/CreateOurList';
+import ManageTaskContent from './Components/ManageTaskContent/ManageTaskContent';
+import TodoList from './Components/TodoList/TodoList';
 
 import { getFromServer, deleteFromServer, postToServer } from './axios';
 
@@ -42,8 +42,8 @@ class App extends React.Component {
     return (    
       <main className="wrapper">
         
-        <CreateNewTask postTask={this.postAndRenderTasks}/>
-        <CreateOurList todoList={this.state.todoList} deleteTask={this.deleteAndRenderTasks} />
+        <ManageTaskContent postTask={this.postAndRenderTasks}/>
+        <TodoList todoList={this.state.todoList} deleteTask={this.deleteAndRenderTasks} getTasks={this.getAndRenderTasks}/>
  
       </main>
     );
